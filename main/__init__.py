@@ -16,6 +16,7 @@ BOT_TOKEN = config("BOT_TOKEN", default=None)
 SESSION = config("SESSION", default=None)
 FORCESUB = config("FORCESUB", default=None)
 AUTH = config("AUTH", default=None, cast=int)
+AUTH2 = config("AUTH2", default=None, cast=int)
 
 bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN) 
 
@@ -31,7 +32,7 @@ except BaseException:
     sys.exit(1)
 
 Bot = Client(
-    "SaveRestricted",
+    "ghost",
     bot_token=BOT_TOKEN,
     api_id=int(API_ID),
     api_hash=API_HASH
