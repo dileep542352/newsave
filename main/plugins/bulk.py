@@ -5,7 +5,7 @@ Plugin for both public & private channels!
 import time, os
 
 from .. import bot as Drone
-from .. import userbot, Bot, AUTH,AUTH2
+from .. import userbot, Bot, AUTH
 from .. import FORCESUB as fs
 from main.plugins.pyroplug import check, get_bulk_msg
 from main.plugins.helpers import get_link, screenshot
@@ -27,7 +27,7 @@ async def get_pvt_content(event, chat, id):
     msg = await userbot.get_messages(chat, ids=id)
     await event.client.send_message(event.chat_id, msg) 
     
-@Drone.on(events.NewMessage(incoming=True, from_users=AUTH,  from_users=AUTH2, pattern='/bulk'))
+@Drone.on(events.NewMessage(incoming=True, from_users=AUTH&AUTH2, pattern='/bulk'))
 async def _bulk(event):
     if not event.is_private:
         return
