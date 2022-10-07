@@ -10,7 +10,7 @@ from telethon import events
 
 from ethon.telefunc import force_sub
 
-ft = f"To use this bot you've to join @{fs}."
+ft = f"first join the channel then use /batch to coppy msg @{fs}."
 
 message = "Send me the message link you want to start saving from, as a reply to this message."
           
@@ -34,7 +34,7 @@ async def clone(event):
     if s == True:
         await event.reply(r)
         return
-    edit = await event.reply("Processing!")
+    edit = await event.reply("Processing!send msg link to check i am joined or not")
     if 't.me/+' in link:
         q = await join(userbot, link)
         await edit.edit(q)
