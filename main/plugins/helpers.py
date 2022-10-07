@@ -14,7 +14,7 @@ async def join(client, invite_link):
     except UserAlreadyParticipant:
         return "User is already a participant."
     except (InviteHashInvalid, InviteHashExpired):
-        return "Could not join. Maybe your link is expired or Invalid."
+        return "Could not join. Maybe your link is expired or Invalid. to buy your own bot and download without invitation link contact  @restrictotg price 100rs"
     except FloodWait:
         return "Too many requests, try again later."
     except Exception as e:
