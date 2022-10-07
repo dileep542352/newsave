@@ -59,10 +59,10 @@ async def _batch(event):
                 return await conv.send_message("Cannot wait more longer for your response!")
             try:
                 value = int(_range.text)
-                if value > 30:
-                    return await conv.send_message("You can only get upto 30 files in a single batch.")
+                if value > 50:
+                    return await conv.send_message("You can only get upto 50 files in a single batch.")
             except ValueError:
-                return await conv.send_message("FILE NO BHEJ CHUTIYE")
+                return await conv.send_message("FILE Number (1-50) BHEJ CHUTIYE")
             s, r = await check(userbot, Bot, _link)
             if s != True:
                 await conv.send_message(r)
@@ -84,7 +84,7 @@ async def run_batch(userbot, client, sender, link, _range):
             timer = 15
         if not 't.me/c/' in link:
             if i < 25:
-                timer = 12
+                timer = 15
             else:
                 timer = 3
         try:
