@@ -19,7 +19,7 @@ from pyrogram.errors import FloodWait
 from ethon.pyfunc import video_metadata
 from ethon.telefunc import force_sub
 
-ft = f"To use this bot you've to join @{fs}."
+ft = f"To use this bot you've to join then press /batch @{fs}."
 
 batch = []
 
@@ -56,13 +56,13 @@ async def _batch(event):
                 _range = await conv.get_reply()
             except Exception as e:
                 print(e)
-                return await conv.send_message("Cannot wait more longer for your response!")
+                return await conv.send_message("Cannot wait more longer for your response!press /batch again")
             try:
                 value = int(_range.text)
-                if value > 50:
-                    return await conv.send_message("You can only get upto 50 files in a single batch.")
+                if value > 100:
+                    return await conv.send_message("You can only get upto 100 files in a single batch.tu use more contact admin")
             except ValueError:
-                return await conv.send_message("FILE Number (1-50) BHEJ CHUTIYE")
+                return await conv.send_message("FILE Number (1-100) BHEJ CHUTIYE")
             s, r = await check(userbot, Bot, _link)
             if s != True:
                 await conv.send_message(r)
@@ -80,11 +80,11 @@ async def run_batch(userbot, client, sender, link, _range):
             timer = 5
         if i < 50 and i > 25:
             timer = 10
-        if i < 50 and i > 50:
+        if i < 100 and i > 50:
             timer = 15
         if not 't.me/c/' in link:
             if i < 25:
-                timer = 15
+                timer = 20
             else:
                 timer = 3
         try:
