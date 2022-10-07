@@ -5,7 +5,7 @@ Plugin for both public & private channels!
 import time, os
 
 from .. import bot as Drone
-from .. import userbot, Bot, AUTH
+from .. import userbot, Bot
 from .. import FORCESUB as fs
 from main.plugins.pyroplug import check, get_bulk_msg
 from main.plugins.helpers import get_link, screenshot
@@ -27,7 +27,7 @@ async def get_pvt_content(event, chat, id):
     msg = await userbot.get_messages(chat, ids=id)
     await event.client.send_message(event.chat_id, msg) 
     
-@Drone.on(events.NewMessage(incoming=True, from_users=AUTH, pattern='/batch'))
+@Drone.on(events.NewMessage(incoming=True,  pattern='/batch'))
 async def _batch(event):
     if not event.is_private:
         return
@@ -59,10 +59,10 @@ async def _batch(event):
                 return await conv.send_message("Cannot wait more longer for your response!")
             try:
                 value = int(_range.text)
-                if value > 1000000:
-                    return await conv.send_message("You can only get upto 1000000 files in a single batch.")
+                if value > 25:
+                    return await conv.send_message("You can only get upto 25 files in a single batch.")
             except ValueError:
-                return await conv.send_message("Range must be an integer!")
+                return await conv.send_message("FILE NO BHEJ CHUTIYE")
             s, r = await check(userbot, Bot, _link)
             if s != True:
                 await conv.send_message(r)
@@ -84,7 +84,7 @@ async def run_batch(userbot, client, sender, link, _range):
             timer = 15
         if not 't.me/c/' in link:
             if i < 25:
-                timer = 2
+                timer = 12
             else:
                 timer = 3
         try:
