@@ -25,14 +25,14 @@ async def check(userbot, client, link):
         except ValueError:
             return False, "**Invalid Link!**"
         except Exception:
-            return False, "Have you joined the channel?"
+            return False, "private channel send channel link first if you dont have channel link buy your own bot from @restrictotg price 100rs "
     else:
         try:
             chat = str(link.split("/")[-2])
             await client.get_messages(chat, msg_id)
             return True, None
         except Exception:
-            return False, "Maybe bot is banned from the chat, or your link is invalid!"
+            return False, "Maybe bot is banned from the chat, or your link is invalid!!!! send invitation link again"
             
 async def get_msg(userbot, client, sender, edit_id, msg_link, i):
     edit = ""
@@ -112,7 +112,7 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i):
                 )
             await edit.delete()
         except (ChannelBanned, ChannelInvalid, ChannelPrivate, ChatIdInvalid, ChatInvalid):
-            await client.edit_message_text(sender, edit_id, "Have you joined the channel?")
+            await client.edit_message_text(sender, edit_id, "private channel send channel link first if you dont have channel link buy your own bot from @restrictotg price 100rs")
             return 
         except Exception as e:
             await client.edit_message_text(sender, edit_id, f'Failed to save: `{msg_link}`')
@@ -128,5 +128,5 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i):
         await edit.delete()
         
 async def get_bulk_msg(userbot, client, sender, msg_link, i):
-    x = await client.send_message(sender, "Processing!")
+    x = await client.send_message(sender, "Processing! send msg link to check i am joined or not")
     await get_msg(userbot, client, sender, x.message_id, msg_link, i) 
