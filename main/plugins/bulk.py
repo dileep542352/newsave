@@ -38,7 +38,7 @@ async def _bulk(event):
         await event.reply(r)
         return       
     if f'{event.sender_id}' in bulk:
-        return await event.reply("You've already started one batch, wait for it to complete you dumb!")
+        return await event.reply("You've already started one bulk, wait for it to complete you dumb!")
     async with Drone.conversation(event.chat_id) as conv: 
         if s != True:
             await conv.send_message("Send me the message link you want to start saving from, as a reply to this message.", buttons=Button.force_reply())
@@ -60,27 +60,27 @@ async def _bulk(event):
             try:
                 value = int(_range.text)
                 if value > 10000:
-                    return await conv.send_message("You can only get upto 10000 files in a single batch .")
+                    return await conv.send_message("You can only get upto 10000 files in a single bulk .")
             except ValueError:
                 return await conv.send_message("Range must be an integer!")
             s, r = await check(userbot, Bot, _link)
             if s != True:
                 await conv.send_message(r)
                 return
-            batch.append(f'{event.sender_id}')
-            await run_batch(userbot, Bot, event.sender_id, _link, value) 
+            bulk.append(f'{event.sender_id}')
+            await run_bulk(userbot, Bot, event.sender_id, _link, value) 
             conv.cancel()
-            batch.pop(0)
+            bulk.pop(0)
             
             
-async def run_batch(userbot, client, sender, link, _range):
+async def run_bulk(userbot, client, sender, link, _range):
     for i in range(_range):
         timer = 60
         if i < 25:
             timer = 5
         if i < 50 and i > 25:
             timer = 10
-        if i < 1000 and i > 50:
+        if i < 10000 and i > 50:
             timer = 15
         if not 't.me/c/' in link:
             if i < 25:
@@ -90,7 +90,7 @@ async def run_batch(userbot, client, sender, link, _range):
         try:
             await get_bulk_msg(userbot, client, sender, link, i) 
         except FloodWait as fw:
-            await asyncio.sleep(fw.seconds + 5)
+            await asyncio.sleep(fw.seconds + 7)
             await get_bulk_msg(userbot, client, sender, link, i)
         protection = await client.send_message(sender, f"Sleeping for `{timer}` seconds to avoid Floodwaits and Protect account!")
         time.sleep(timer)
