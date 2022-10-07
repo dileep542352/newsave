@@ -27,7 +27,7 @@ async def get_pvt_content(event, chat, id):
     msg = await userbot.get_messages(chat, ids=id)
     await event.client.send_message(event.chat_id, msg) 
     
-@Drone.on(events.NewMessage(incoming=True, from_users=AUTH,  from_users=AUTH, pattern='/bulk'))
+@Drone.on(events.NewMessage(incoming=True, from_users=AUTH,  from_users=AUTH2, pattern='/bulk'))
 async def _bulk(event):
     if not event.is_private:
         return
