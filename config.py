@@ -1,6 +1,12 @@
-API_ID = config("API_ID", default=None, cast=int)
-API_HASH = config("API_HASH", default=None)
-BOT_TOKEN = config("BOT_TOKEN", default=None)
-SESSION = config("SESSION", default=None)
-FORCESUB = config("FORCESUB", default=None)
-AUTH = 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import os
+import logging
+
+API_ID = "7856100"
+API_HASH = "dba409d7e8d44ab5bb689378deea1792"
+BOT_TOKEN = "5275773846:AAHJS6KCFdZk7v2J__QVsMzZ58aQRnf8LLo"
+SESSION = "AQAuQ48OmPnQsbzBUkJ5q8kn9XUIM7Yu0yP_edfB_BvFvVCiO3gc2nZMNwflQugaC26KBNBgFt084WEZjx7Ojj0TZlmZxhOZo-DSqf6hfWTkyv_h2ldEYiYzvbC-k93YJaiFiUjx7olb66m_5bqzjZgEZnSDyI89uK6UFYM-ZMIia0pgy01GRxzr38ulG7zaj2eqVbjzvOTNGArtktsinNpTZUjTuu5Gl_7EMsBWUn16jt9YYM4d6z5ZdY5Uq4Uz6-ayWU4HznNUAsPnpaI-4EPU7jIQX0bzPWG6fDWXjdOQNVwvlDIzL6COu6PT0BuDXVYrKIVut5xq8MvYVmWVtvgFVCfRoAA"
+FORCESUB = "hackergroupshsd"
+AUTH = "1411895712"
